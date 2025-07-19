@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unity Digital Infra - Login</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden; /* Prevent scrolling */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .page-wrapper {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .login-container {
+      margin-left: 40px;
+      background: rgba(255, 255, 255, 0.2); /* 20% opacity */
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+      max-width: 350px;
+      width: 100%;
+      box-sizing: border-box;
+      backdrop-filter: blur(8px);
+    }
+
+    h2 {
+      margin-bottom: 24px;
+      color: #222;
+      text-align: left;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #0056b3;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #003d80;
+    }
+
+    .register-link {
+      margin-top: 16px;
+      display: block;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .register-link a {
+      color: #0056b3;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .register-link a:hover {
+      text-decoration: underline;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+      text-align: left;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 500px) {
+      html, body {
+        overflow: hidden; /* lock scrolling */
+      }
+
+      .page-wrapper {
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding-bottom: 20px;
+      }
+
+      .login-container {
+        margin: 0;
+        width: 90%;
+        max-width: 360px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <div class="error" id="errorMsg"></div>
+      </form>
+      <div class="register-link">
+        Don't have an account? <a href="register.html">Register</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      if (email === "admin@udia.com" && password === "password123") {
+        window.location.href = "dashboard.html";
+      } else {
+        document.getElementById("errorMsg").textContent = "Invalid credentials.";
+      }
+    });
+  </script>
+</body>
+</html>
